@@ -26,7 +26,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable) // CSRF 보호 비활성화 (POST 요청 허용)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/auth/login").permitAll() // 회원가입 & 로그인 요청 허용
+                        .requestMatchers("/auth/register", "/auth/login", "/posts/**").permitAll() // 회원가입 & 로그인 요청 허용
                         .anyRequest().authenticated() // 그 외 모든 요청은 인증 필요
                 )
                 .formLogin(AbstractHttpConfigurer::disable) // 기본 로그인 폼 비활성화
